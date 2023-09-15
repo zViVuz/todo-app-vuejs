@@ -27,7 +27,10 @@ export default {
         const title = ref('')
         const addTodo = (event) => {
             event.preventDefault();
-
+            if (!title.value.trim()) {
+                // Kiểm tra nếu title rỗng hoặc chỉ chứa khoảng trắng
+                return; // Không thêm todo mới nếu tiêu đề rỗng
+            }
             const newTodo = {
                 id: nextId.value, // Sử dụng nextId được truyền từ props
                 title: title.value,

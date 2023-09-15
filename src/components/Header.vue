@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <h1>To do list</h1>
-    <p>Hour: {{ currentTime }}</p>
+    <p>Time: {{ currentTime }}</p>
     <p class="p-1">Date: {{ currentDate }}</p>
   </header>
 </template>

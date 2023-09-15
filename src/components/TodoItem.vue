@@ -1,6 +1,6 @@
 <template>
     <p :class="['todo-item', todoProps.checked ? 'btn-checked' : '']">
-        <input type="checkbox" :checked="todoProps.checked" @change="markItemChecked">
+        <input type="checkbox" :checked="todoProps.checked" @change="markItemChecked" required />
         {{ todoProps.title }}
         <span>{{ todoProps.date }}</span>
         <button class="del-btn" v-on:click="deleteItem">X</button>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import FancyButton from './SlotBtn.vue'
 export default {
     name: 'TodoItem',
     props: ['todoProps'],
@@ -21,7 +21,8 @@ export default {
         }
         return {
             markItemChecked,
-            deleteItem
+            deleteItem,
+            FancyButton
         }
     }
 }
@@ -34,9 +35,10 @@ export default {
     margin: 0px;
     border-bottom: 1px solid #ccc dotted;
 }
+
 .todo-item span {
     position: absolute;
-    right:75px;
+    right: 75px;
 }
 
 .btn-checked {
