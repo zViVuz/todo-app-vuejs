@@ -1,34 +1,36 @@
 <template>
-    <AddTodo @add-todo="addTodo" @filter-todos="filterTodos" :nextId="nextId" :todos="todos"/>    
+    <AddTodo @add-todo="addTodo" @filter-todos="filterTodos" :nextId="nextId" :todos="todos" />
     <TodoItem v-for="todo in todos" v-bind:key="todo.id" v-bind:todoProps="todo" v-on:item-checked="markItemChecked"
-        @delete-item="deteleTodo" 
-        v-bind:todos="todos"/>
+        @delete-item="deteleTodo" v-bind:todos="todos" />
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import TodoItem from './TodoItem.vue'
 import AddTodo from './AddTodo.vue'
 export default {
     name: 'Todos',
     components: { TodoItem, AddTodo },
     setup() {
-        
+
         const todos = ref([
             {
                 id: 1,
                 title: 'Task 1',
-                checked: false
+                checked: false,
+                date: '1/15/2023'
             },
             {
                 id: 2,
                 title: 'Task 2',
-                checked: false
+                checked: false,
+                date: '9/23/2023'
             },
             {
                 id: 3,
                 title: 'Task 3',
-                checked: false
+                checked: false,
+                date: '9/15/2013'
             }
         ])
         const markItemChecked = id => {
@@ -50,14 +52,17 @@ export default {
         const filterTodos = filteredList => {
             todos.value = filteredList
         }
-
+        const reversedTodo = computed(() => {
+            return todos.value.slice().reverse()
+        })
         return {
             todos,
             markItemChecked,
             deteleTodo,
             addTodo,
-            nextId, 
-            filterTodos
+            nextId,
+            filterTodos,
+            reversedTodo
         }
     }
 }

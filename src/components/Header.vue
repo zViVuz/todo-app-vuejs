@@ -10,7 +10,7 @@
 import { computed, onMounted, ref } from 'vue'
 export default {
   name: 'Header',
-  setup() {
+  setup(context) {
     const currentTime = ref('')
     const currentDate = ref('')
     const updateDdate = () => {

@@ -31,7 +31,8 @@ export default {
             const newTodo = {
                 id: nextId.value, // Sử dụng nextId được truyền từ props
                 title: title.value,
-                checked: false
+                checked: false,
+                date: new Date().toLocaleDateString()
             }
             context.emit('add-todo', newTodo)
 

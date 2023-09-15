@@ -2,6 +2,7 @@
     <p :class="['todo-item', todoProps.checked ? 'btn-checked' : '']">
         <input type="checkbox" :checked="todoProps.checked" @change="markItemChecked">
         {{ todoProps.title }}
+        <span>{{ todoProps.date }}</span>
         <button class="del-btn" v-on:click="deleteItem">X</button>
     </p>
 </template>
@@ -26,12 +27,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .todo-item {
     background: whitesmoke;
     padding: 10px;
     margin: 0px;
     border-bottom: 1px solid #ccc dotted;
+}
+.todo-item span {
+    position: absolute;
+    right:75px;
 }
 
 .btn-checked {
